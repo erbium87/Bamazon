@@ -86,6 +86,7 @@ var shop = function () {
 					}//end of if
 					else {
 						console.log("Insufficient Quantity!!!");
+						connection.end();
 					}
 				});//end of inventory fn
 			} //end of if
