@@ -15,9 +15,6 @@ database: "bamazon_db"
 connection.connect(function(err){
 	// if(err) throw err;
 	console.log("connection as id " + connection.threadId);
-
-	// connection.end();
-
 });
 
 var shop = function () {
@@ -38,8 +35,6 @@ var shop = function () {
 		name: "id",
 		message: "What would you like to order?"
 	}]).then(function(userPick) {
-		// console.log("userpick " + userPick.id);
-		// console.log(res);
 		for (var i = 0; i < res.length; i++) {
 			var productItem = res[i];
 			// console.log(productItem.item_id);
@@ -77,20 +72,17 @@ var shop = function () {
 							if (continueShop.id === true ) {
 								saleItems = [];
 								shop();
-							}
-							else {
+							} else {
 								console.log("Have a Nice Day!!");
 								connection.end();
 							}
 						});
-					}//end of if
-					else {
+					} else {
 						console.log("Insufficient Quantity!!!");
 						connection.end();
 					}
 				});//end of inventory fn
 			} //end of if
-		// console.log("test");
 		}//end of for loop
 	});//end of userPick
   });//end of connection.query for products in db
@@ -98,21 +90,4 @@ var shop = function () {
 
 shop();
 
-// var displayTable = function () {
-// 		connection.query("SELECT * FROM products", function(err, res) {
-// 			// console.log("test: " + res);
-// 				saleItems=[];
-// 				// if (err) throw err;
-// 				for (var i = 0; i < res.length; i++){
-// 					saleItems.push({
-// 						ID: res[i].item_id, 
-// 						Product: res[i].product_name, 
-// 						Department: res[i].department_name, 
-// 						Price: res[i].price, 
-// 						Quantity: res[i].stock_quantity
-// 					});
-// 				}//end of for loop
-// 				console.table(saleItems);
-// 				shop();
-// 		});
-// 	};
+
