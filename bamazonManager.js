@@ -142,7 +142,7 @@ var addInventory = function () {
                         if (addStock.units <= 1){
                         console.log(`${addStock.units} unit of ${productName} has been added!`);
                         } else {
-                            console.log(`${addStock.units} units of ${productItem.product_name} have been added!`);
+                            console.log(`${addStock.units} units of ${productName} have been added!`);
                         }
             
                         inquirer.prompt([{
