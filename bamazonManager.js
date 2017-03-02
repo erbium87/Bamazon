@@ -73,7 +73,6 @@ var lowInventory = function () {
       connection.query("SELECT * FROM products", function(err, res) {
         // if (err) throw err;
         for (var i = 0; i < res.length; i++) {
-            // var productItem = res[i];
             if (res[i].stock_quantity <= 5) {
                 lowItems.push({
                     ID: res[i].item_id, 
@@ -84,6 +83,7 @@ var lowInventory = function () {
                 });
             }
         }
+        console.log("The following items are running low: ");
         console.table(lowItems);
         inquirer.prompt([{
             type: "confirm",
@@ -91,7 +91,7 @@ var lowInventory = function () {
             message: "Would you like to keep working?"
             }]).then(function(continueShop) {
                 if (continueShop.id === true ) {
-                    saleItems = [];
+                    lowItems = [];
                     managerView();
                 } else {
                     console.log("Another penny earned! Good job today!");
